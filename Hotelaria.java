@@ -89,6 +89,8 @@ public class Hotelaria {
 	}
 
 	//Adiciona um serviço prestado para que seja cobrado no futuro;
+	//Concatena numa String o código numérico que representa o serviço, String que está no array de Serviços,
+	//Cada posição do array + 1 representa a cocheira em que o cavalo se encontra, servicos na posicao n + 1 são do cavalo da cocheira n + 1.
 	public void addServicos(int cocheira) {
 		System.out.println(
 				"Selecione o Serviço: \n1 - Injeção Intravenosa/muscular\n2 - Dosagem de Vermífego\n3 - Aluguel de cavalo\n4 - Encilhar Cavalo\n5 - Aula de Equitação");
@@ -104,6 +106,8 @@ public class Hotelaria {
 	}
 	
 	//Calcula o valor da mensalidade junto dos demais serviços prestados até o momento;
+	//Realiza a leitura da String do array de servico atravéz de char.At() para calcular o valor de todos os serviços prestados até o momento;
+	//Após fatura calculada, a string de seviços é zerada;
 
 	public void fecharFatura(int cocheira) {
 		System.out.println("===FATURA DO MÊS===");
