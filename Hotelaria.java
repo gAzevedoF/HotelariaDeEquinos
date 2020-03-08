@@ -16,7 +16,7 @@ public class Hotelaria {
 		servicos = new String[capacidade];
 
 	}
-
+//Adiciona cavalo na hotelaria, retornando um boolean para confirmar ou n√£o a inser√ß√£o;
 	public boolean addCavalo(Cavalo c) {
 		if (this.cocheiras == null) {
 			cocheiras[0] = c;
@@ -31,7 +31,7 @@ public class Hotelaria {
 
 		return false;
 	}
-
+//Adiciona uma lista de cavalos previamente existente em documento, carrega a lista e faz inser√ß√£o no sistema, retornando um boolean para confirmar ou n√£o a inser√ß√£o;
 	public boolean carregarCavalos(File file) throws IOException {
 		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
 			for (String line = br.readLine(); line != null; line = br.readLine()) {
@@ -50,6 +50,8 @@ public class Hotelaria {
 		}
 		return true;
 	}
+	
+//Salva os dados de todos os clientes num documento, formatado para que o m√©todo carregarCavalos(File file) possa executa-lo;
 
 	public void save(File file) throws IOException {
 
@@ -60,6 +62,8 @@ public class Hotelaria {
 			}
 		}
 	}
+	
+	//Remove o cavalo que for selecionado da lista.
 
 	public void remove() {
 		System.out.println("Selecione o Cavalo a ser removido: ");
@@ -72,6 +76,7 @@ public class Hotelaria {
 		n.close();
 	}
 
+	//Lista todos os cavalos hotelados;
 	public void listar() {
 		System.out.println("Lista de Cavalos:");
 		for (int i = 0; i < cocheiras.length; i++) {
@@ -83,9 +88,10 @@ public class Hotelaria {
 		}
 	}
 
+	//Adiciona um servi√ßo prestado para que seja cobrado no futuro;
 	public void addServicos(int cocheira) {
 		System.out.println(
-				"Selecione o ServiÁo: \n1 - InjeÁ„o Intravenosa/muscular\n2 - Dosagem de VermÌfego\n3 - Aluguel de cavalo\n4 - Encilhar Cavalo\n5 - Aula de EquitaÁ„o");
+				"Selecione o Servi√ßo: \n1 - Inje√ß√£o Intravenosa/muscular\n2 - Dosagem de Verm√≠fego\n3 - Aluguel de cavalo\n4 - Encilhar Cavalo\n5 - Aula de Equita√ß√£o");
 
 		Scanner n = new Scanner(System.in);
 		String resposta = n.next();
@@ -96,9 +102,11 @@ public class Hotelaria {
 		}
 		n.close();
 	}
+	
+	//Calcula o valor da mensalidade junto dos demais servi√ßos prestados at√© o momento;
 
 	public void fecharFatura(int cocheira) {
-		System.out.println("===FATURA DO M S===");
+		System.out.println("===FATURA DO M√äS===");
 		double valorCocheira = 0;
 		String sexo = cocheiras[cocheira - 1].getSexo();
 		if (sexo.equalsIgnoreCase("F") || sexo.equalsIgnoreCase("MC")) {
@@ -108,16 +116,16 @@ public class Hotelaria {
 		}
 
 		System.out.println("Valor da Cocheira: R$" + valorCocheira);
-		System.out.println("ServiÁos Adicionais: ");
+		System.out.println("Servi√ßos Adicionais: ");
 
 		double valorServicos = 0;
 		for (int i = 0; i < servicos[cocheira - 1].length(); i++) {
 			if (servicos[cocheira - 1].charAt(i) == '1') {
-				System.out.println("InjeÁ„o Intravenosa/muscular: R$10,00");
+				System.out.println("Inje√ß√£o Intravenosa/muscular: R$10,00");
 				valorServicos += 10;
 			}
 			if (servicos[cocheira - 1].charAt(i) == '2') {
-				System.out.println("Dosagem de VermÌfego: R$10,00");
+				System.out.println("Dosagem de Verm√≠fego: R$10,00");
 				valorServicos += 10;
 			}
 			if (servicos[cocheira - 1].charAt(i) == '3') {
@@ -129,7 +137,7 @@ public class Hotelaria {
 				valorServicos += 10;
 			}
 			if (servicos[cocheira - 1].charAt(i) == '5') {
-				System.out.println("Aula de EquitaÁ„o: R$50,00");
+				System.out.println("Aula de Equita√ß√£o: R$50,00");
 				valorServicos += 50;
 			}
 		}
